@@ -1,9 +1,10 @@
-plugins {
-    id 'java'
-}
-
 sourceCompatibility = '11'
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':the-dots-api')
+
+    implementation 'org.springframework.data:spring-data-mongodb:2.2.7.RELEASE'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }

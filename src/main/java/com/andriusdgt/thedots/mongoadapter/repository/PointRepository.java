@@ -1,4 +1,4 @@
-package com.andriusdgt.thedots.mongoplugin.repository;
+package com.andriusdgt.thedots.mongoadapter.repository;
 
 import com.andriusdgt.thedots.api.model.Point;
 import org.springframework.data.domain.Pageable;

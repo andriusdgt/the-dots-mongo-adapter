@@ -1,6 +1,6 @@
 package com.andriusdgt.thedots.mongoadapter.repository;
 
-import com.andriusdgt.thedots.api.model.Point;
+import com.andriusdgt.thedots.core.model.Point;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -3,11 +3,9 @@ package com.andriusdgt.thedots.mongoplugin.repository;
 import com.andriusdgt.thedots.api.model.PointCoordinates;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public interface PointCoordinatesRepository extends MongoRepository<PointCoordinates, String> {
 
     List<PointCoordinates> findAll();

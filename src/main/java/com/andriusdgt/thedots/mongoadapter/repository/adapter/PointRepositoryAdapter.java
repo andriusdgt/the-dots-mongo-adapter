@@ -22,7 +22,7 @@ public class PointRepositoryAdapter implements PointRepository {
     }
 
     @Override
-    public void saveAll(List<Point> points) {
+    public void saveAll(Iterable<Point> points) {
         mongoRepository.saveAll(points);
     }
 

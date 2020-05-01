@@ -43,7 +43,7 @@ public class PointRepositoryAdapter implements PointRepository {
     }
 
     @Override
-    public List<Point> findByListId(String listId, int pageIndex, int pageSize, String sortDirection) {
+    public List<Point> findByListIdOrderByXAndY(String listId, int pageIndex, int pageSize, String sortDirection) {
         return mongoRepository.findByListId(
             listId,
             PageRequest.of(pageIndex, pageSize, Sort.Direction.fromString(sortDirection), "x", "y")

@@ -12,6 +12,8 @@ public interface PointMongoRepository extends MongoRepository<Point, String> {
 
     List<Point> findByListId(String listId);
 
+    List<Point> findByListIdOrderByXAscYAsc(String listId);
+
     List<Point> findByListId(String listId, Pageable pageable);
 
     long countByListId(String listId);

@@ -33,6 +33,11 @@ public class PointRepositoryAdapter implements PointRepository {
     }
 
     @Override
+    public List<Point> findByListIdOrderByXAscYAsc(String listId) {
+        return mongoRepository.findByListIdOrderByXAscYAsc(listId);
+    }
+
+    @Override
     public List<Point> findByListId(String listId, int pageIndex, int pageSize) {
         return mongoRepository.findByListId(listId, PageRequest.of(pageIndex, pageSize));
     }

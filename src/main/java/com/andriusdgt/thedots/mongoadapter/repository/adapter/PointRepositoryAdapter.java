@@ -5,6 +5,7 @@ import com.andriusdgt.thedots.core.repository.PointRepository;
 import com.andriusdgt.thedots.mongoadapter.repository.PointMongoRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -34,6 +35,14 @@ public class PointRepositoryAdapter implements PointRepository {
     @Override
     public List<Point> findByListId(String listId, int pageIndex, int pageSize) {
         return mongoRepository.findByListId(listId, PageRequest.of(pageIndex, pageSize));
+    }
+
+    @Override
+    public List<Point> findByListId(String listId, int pageIndex, int pageSize, String sortDirection) {
+        return mongoRepository.findByListId(
+            listId,
+            PageRequest.of(pageIndex, pageSize, Sort.Direction.fromString(sortDirection), "x", "y")
+        );
     }
 
     @Override

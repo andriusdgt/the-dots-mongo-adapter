@@ -1,10 +1,26 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
 sourceCompatibility = '11'
 
 dependencies {
-    compile project(':the-dots-core')
+    implementation project(':the-dots-core')
 
+    implementation "javax.validation:validation-api:2.0.1.Final"
     implementation 'org.springframework.data:spring-data-mongodb:2.2.6.RELEASE'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
 }

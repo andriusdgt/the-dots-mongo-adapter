@@ -5,7 +5,6 @@ import com.andriusdgt.thedots.core.repository.PointListRepository;
 import com.andriusdgt.thedots.mongoadapter.repository.PointListMongoRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public class PointListRepositoryAdapter implements PointListRepository {
 
@@ -18,11 +17,6 @@ public class PointListRepositoryAdapter implements PointListRepository {
     @Override
     public void save(PointList pointList) {
         mongoRepository.save(pointList);
-    }
-
-    @Override
-    public Optional<PointList> findById(String id) {
-        return mongoRepository.findById(id);
     }
 
     @Override

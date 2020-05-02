@@ -61,13 +61,13 @@ public final class PointRepositoryAdapter implements PointRepository {
     }
 
     @Override
-    public void deleteByListId(String listId) {
-        mongoRepository.deleteByListId(listId);
+    public void deleteById(String id) {
+        mongoRepository.deleteById(id);
     }
 
     @Override
-    public void deleteById(String id) {
-        mongoRepository.deleteById(id);
+    public void deleteByListId(String listId) {
+        mongoRepository.deleteByListId(listId);
     }
 
 }

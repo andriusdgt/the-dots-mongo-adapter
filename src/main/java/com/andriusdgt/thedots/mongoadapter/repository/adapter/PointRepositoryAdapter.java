@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
-public class PointRepositoryAdapter implements PointRepository {
+public final class PointRepositoryAdapter implements PointRepository {
 
     private final PointMongoRepository mongoRepository;
 

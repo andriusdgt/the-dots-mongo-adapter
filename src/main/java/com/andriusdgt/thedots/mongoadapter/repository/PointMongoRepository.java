@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface PointMongoRepository extends MongoRepository<Point, String> {
 
-    List<Point> findAll();
-
     List<Point> findByListId(String listId);
 
     List<Point> findByListIdOrderByXAscYAsc(String listId);

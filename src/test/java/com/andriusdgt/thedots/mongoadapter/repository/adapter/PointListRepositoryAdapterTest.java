@@ -16,7 +16,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class PointListRepositoryAdapterTest {
+final class PointListRepositoryAdapterTest {
 
     @Mock
     private PointListMongoRepository mongoRepository;
@@ -24,12 +24,12 @@ public class PointListRepositoryAdapterTest {
     private PointListRepositoryAdapter repositoryAdapter;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         repositoryAdapter = new PointListRepositoryAdapter(mongoRepository);
     }
 
     @Test
-    public void savesPointList() {
+    void savesPointList() {
         PointList pointList = new PointList("listId", "name");
 
         repositoryAdapter.save(pointList);
@@ -38,7 +38,7 @@ public class PointListRepositoryAdapterTest {
     }
 
     @Test
-    public void findsPointListByName() {
+    void findsPointListByName() {
         PointList pointList = new PointList("listId", "name");
         doReturn(pointList).when(mongoRepository).findByName("listId");
 
@@ -46,7 +46,7 @@ public class PointListRepositoryAdapterTest {
     }
 
     @Test
-    public void findsAllPointLists() {
+    void findsAllPointLists() {
         List<PointList> pointLists = Collections.singletonList(new PointList("listId", "name"));
         doReturn(pointLists).when(mongoRepository).findAll();
 
@@ -54,7 +54,7 @@ public class PointListRepositoryAdapterTest {
     }
 
     @Test
-    public void deletesPointList() {
+    void deletesPointList() {
         PointList pointList = new PointList("listId", "name");
 
         repositoryAdapter.delete(pointList);
@@ -63,7 +63,7 @@ public class PointListRepositoryAdapterTest {
     }
 
     @Test
-    public void deletesPointListById() {
+    void deletesPointListById() {
         repositoryAdapter.deleteById("listId");
 
         verify(mongoRepository).deleteById("listId");

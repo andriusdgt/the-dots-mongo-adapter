@@ -6,11 +6,11 @@ import com.andriusdgt.thedots.mongoadapter.repository.PointListMongoRepository;
 
 import java.util.List;
 
-public final class PointListRepositoryAdapter implements PointListRepository {
+final class PointListRepositoryAdapter implements PointListRepository {
 
     private final PointListMongoRepository mongoRepository;
 
-    public PointListRepositoryAdapter(PointListMongoRepository mongoRepository) {
+    PointListRepositoryAdapter(PointListMongoRepository mongoRepository) {
         this.mongoRepository = mongoRepository;
     }
 

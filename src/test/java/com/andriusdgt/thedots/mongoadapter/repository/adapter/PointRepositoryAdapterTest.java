@@ -21,7 +21,7 @@ import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @ExtendWith(MockitoExtension.class)
-class PointRepositoryAdapterTest {
+final class PointRepositoryAdapterTest {
 
     @Mock
     private PointMongoRepository mongoRepository;
@@ -29,12 +29,12 @@ class PointRepositoryAdapterTest {
     private PointRepositoryAdapter repositoryAdapter;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         repositoryAdapter = new PointRepositoryAdapter(mongoRepository);
     }
 
     @Test
-    public void savesPoint() {
+    void savesPoint() {
         Point point = new Point(10, 20, "listId");
 
         repositoryAdapter.save(point);
@@ -43,7 +43,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void savesPoints() {
+    void savesPoints() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
 
         repositoryAdapter.saveAll(points);
@@ -52,7 +52,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void findsPointsByListId() {
+    void findsPointsByListId() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
         doReturn(points).when(mongoRepository).findByListId("listId");
 
@@ -60,7 +60,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void findsSortedPointsByListId() {
+    void findsSortedPointsByListId() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
         doReturn(points).when(mongoRepository).findByListIdOrderByXAscYAsc("listId");
 
@@ -68,7 +68,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void findsPaginatedPointsByListId() {
+    void findsPaginatedPointsByListId() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
         doReturn(points).when(mongoRepository).findByListId("listId", PageRequest.of(3, 50));
 
@@ -76,7 +76,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void findsSortedPaginatedPointsByListId() {
+    void findsSortedPaginatedPointsByListId() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
         doReturn(points).when(mongoRepository).findByListId("listId", PageRequest.of(3, 50, ASC, "x", "y"));
 
@@ -84,7 +84,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void findsReverseSortedPaginatedPointsByListId() {
+    void findsReverseSortedPaginatedPointsByListId() {
         List<Point> points = Collections.singletonList(new Point(10, 20, "listId"));
         doReturn(points).when(mongoRepository).findByListId("listId", PageRequest.of(3, 50, DESC, "x", "y"));
 
@@ -92,7 +92,7 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void checksIfPointIsSaved() {
+    void checksIfPointIsSaved() {
         Point point = new Point(10, 20, "listId");
         doReturn(true).when(mongoRepository).exists(Example.of(point));
 
@@ -100,21 +100,21 @@ class PointRepositoryAdapterTest {
     }
 
     @Test
-    public void countsByListId() {
+    void countsByListId() {
         doReturn(1L).when(mongoRepository).countByListId("listId");
 
         assertEquals(1L, repositoryAdapter.countByListId("listId"));
     }
 
     @Test
-    public void deletesPointById() {
+    void deletesPointById() {
         repositoryAdapter.deleteById("id");
 
         verify(mongoRepository).deleteById("id");
     }
 
     @Test
-    public void deletesPointsByListId() {
+    void deletesPointsByListId() {
         repositoryAdapter.deleteByListId("listId");
 
         verify(mongoRepository).deleteByListId("listId");

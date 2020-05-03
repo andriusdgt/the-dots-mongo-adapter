@@ -6,8 +6,6 @@ repositories {
     jcenter()
 }
 
-sourceCompatibility = '11'
-
 dependencies {
     implementation project(':the-dots-core')
 
